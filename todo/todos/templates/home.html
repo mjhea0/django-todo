@@ -1,0 +1,24 @@
+<html>
+<head>
+	<title>TODO App</title>
+</head>
+<body>
+	{% for item in items %}
+	<div class="item-block">
+		<p class="item">{{item.text}}</p>
+		<form action="/delete/" method="post">
+			{% csrf_token %}
+			<input type="hidden" name="id" value="{{item.id}}">
+			<button class="submit-button" type="submit">DELETE</button>
+		</form>
+	</div>
+	{% endfor %}
+	<div class="item-block add">
+		<form class="add" action="/add/" method="post">
+			{% csrf_token %}
+			<input class="item" type="text" name="text">
+			<button class="submit-button" type="submit">ADD</button>
+		</form>
+	</div>
+</body>
+</html>
